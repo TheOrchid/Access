@@ -4,7 +4,9 @@
   "keywords": [
     "framework",
     "laravel",
-    "settings"
+    "access",
+    "roles",
+    "rbac"
   ],
   "license": "MIT",
   "require": {
