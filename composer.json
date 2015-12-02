@@ -1,0 +1,25 @@
+{
+  "name": "orchid/access",
+  "description": "RBAC for The Laravel Framework.",
+  "keywords": [
+    "framework",
+    "laravel",
+    "settings"
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=5.5.9",
+    "laravel/framework": "5.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Orchid\\Settings\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "dev"
+}
