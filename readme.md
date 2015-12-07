@@ -33,5 +33,5 @@ Role Based Access Control package from Laravel
 ## Usage
 
 ```php
- Add later
+ Add laters
 ```
