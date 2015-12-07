@@ -1,6 +1,6 @@
 {
   "name": "orchid/access",
-  "description": "RBAC for The Laravel Framework.",
+  "description": "Role based access control package from Laravel Framework.",
   "keywords": [
     "framework",
     "laravel",

@@ -1,5 +1,5 @@
 ## Access
-Role Based Access Control package from Laravel
+Role based access control package from Laravel
 
 [![Latest Stable Version](https://poser.pugx.org/orchid/access/v/stable)](https://packagist.org/packages/orchid/access)
 [![Total Downloads](https://poser.pugx.org/orchid/access/downloads)](https://packagist.org/packages/orchid/access)
