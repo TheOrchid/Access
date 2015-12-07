@@ -1,4 +1,4 @@
-<?php namespace Mautab\Services\Manager\Access;
+<?php namespace Orchid\Access\Traits;
 
 trait UserAccess
 {
@@ -49,11 +49,18 @@ trait UserAccess
         $this->attributes['permissions'] = $permissions ? json_encode($permissions) : '';
     }
 
+    /**
+     * @return mixed
+     */
     public function getRoles()
     {
         return $this->roles;
     }
 
+    /**
+     * @param $role
+     * @return bool
+     */
     public function inRole($role)
     {
         $role = array_first($this->roles, function ($index, $instance) use ($role) {
@@ -68,6 +75,10 @@ trait UserAccess
         return $role !== null;
     }
 
+    /**
+     * @param $CheckPermissions
+     * @return bool
+     */
     public function hasAccess($CheckPermissions)
     {
         $Permissions = $this->roles()->lists('permissions');
@@ -82,16 +93,25 @@ trait UserAccess
         return false;
     }
 
+    /**
+     * @return mixed
+     */
     public function roles()
     {
         return $this->belongsToMany(static::$rolesModel, 'role_users', 'user_id', 'role_id')->withTimestamps();
     }
 
+    /**
+     * @param $Role
+     */
     public function addRole($Role)
     {
         $this->roles()->save($Role);
     }
 
+    /**
+     * @return mixed
+     */
     protected function createPermissions()
     {
         $userPermissions = $this->permissions;
