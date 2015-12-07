@@ -34,4 +34,28 @@ Role based access control package from Laravel
 
 ```php
  Add laters
+
+
+/**
+* Пользователь
+*/
+
+// Проверяет доступность у пользователя в ролях и пермишеннах
+Auth:user()->hasAccess('param');
+
+// Получить доступы для пользователя
+Auth:user()->getPermissionsAttribute($permissions);
+
+// Установть доступы для пользователя
+Auth:user()->getPermissionsAttribute($permissions)
+
+// Получить роли пользователя
+Auth:user()->getRoles();
+
+// Проверить имеет ли пользователеь роль
+Auth:user()->inRole($role)
+
+// Добиваить пользователю роль
+Auth:user()->addRole($role)
+
 ```
