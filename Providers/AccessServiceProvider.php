@@ -20,7 +20,6 @@ class AccessServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerDatabase();
-
     }
 
     protected function registerDatabase()
