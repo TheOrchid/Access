@@ -4,7 +4,7 @@ trait RoleAccess
 {
 
     /**
-     * {@inheritDoc}
+     * @return mixed
      */
     public static function getUsersModel()
     {
@@ -12,7 +12,7 @@ trait RoleAccess
     }
 
     /**
-     * {@inheritDoc}
+     * @param $usersModel
      */
     public static function setUsersModel($usersModel)
     {
@@ -54,7 +54,7 @@ trait RoleAccess
     }
 
     /**
-     * {@inheritDoc}
+     * @return mixed
      */
     public function getRoleId()
     {
@@ -62,7 +62,7 @@ trait RoleAccess
     }
 
     /**
-     * {@inheritDoc}
+     * @return mixed
      */
     public function getRoleSlug()
     {
@@ -70,7 +70,7 @@ trait RoleAccess
     }
 
     /**
-     * {@inheritDoc}
+     * @return mixed
      */
     public function getUsers()
     {

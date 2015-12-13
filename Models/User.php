@@ -13,7 +13,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     use Authenticatable, CanResetPassword, UserAccess;
 
-
+    /**
+     * @var
+     */
     protected static $rolesModel = Roles::class;
 
 
@@ -24,16 +26,23 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $table = 'users';
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'email',
         'permissions',
     ];
+
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
 
 }

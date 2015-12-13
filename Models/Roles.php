@@ -8,10 +8,19 @@ class Roles extends Model
 
     use RoleAccess;
 
+    /**
+     * @var
+     */
     protected static $usersModel = User::class;
 
+    /**
+     * @var string
+     */
     protected $table = 'roles';
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'id',
         'name',
