@@ -33,29 +33,63 @@ Role based access control package from Laravel
 ## Usage
 
 ```php
- Add laters
-
 
 /**
-* Пользователь
+* User
 */
 
-// Проверяет доступность у пользователя в ролях и пермишеннах
+// It checks the availability of a user in the roles and permissions
 Auth:user()->hasAccess('param');
 
-// Получить доступы для пользователя
+// Get access for the user
 Auth:user()->getPermissionsAttribute($permissions);
 
-// Установть доступы для пользователя
-Auth:user()->getPermissionsAttribute($permissions)
+// Set access for the user
+Auth:user()->setPermissionsAttribute($permissions)
 
-// Получить роли пользователя
+// Get roles for the user
 Auth:user()->getRoles();
 
-// Проверить имеет ли пользователеь роль
+// Check user has role
 Auth:user()->inRole($role)
 
-// Добиваить пользователю роль
+// Add Role for user
 Auth:user()->addRole($role)
+
+```
+
+
+
+```php
+
+/**
+* Middleware
+*/
+
+// To check on each controller add middleware in /Http/Kernel.php
+        'Access'     => \Orchid\Access\Middleware\AccessMiddleware::class,
+```
+
+
+
+
+```php
+
+/**
+* Role
+*/
+
+// Model Role
+
+$role = Role::getRoleSlug('string');
+
+// Will return all users with that role
+$role->getUsers();
+
+// Get access for the role
+$role->getPermissionsAttribute($permissions);
+
+// Set access for the role
+$role->setPermissionsAttribute($permissions);
 
 ```
