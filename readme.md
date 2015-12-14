@@ -38,6 +38,61 @@ Role based access control package from Laravel
 * User
 */
 
+
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model;
+use Orchid\Access\Traits\UserAccess;
+
+
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+
+    use Authenticatable, CanResetPassword, UserAccess;
+
+    /**
+     * @var
+     */
+    protected static $rolesModel = Roles::class;
+
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'email',
+        'permissions',
+    ];
+
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+
+}
+
+
+
+
+
+
+
+
 // It checks the availability of a user in the roles and permissions
 Auth:user()->hasAccess('param');
 
@@ -81,6 +136,41 @@ Auth:user()->addRole($role)
 
 // Model Role
 
+use Illuminate\Database\Eloquent\Model;
+use Orchid\Access\Traits\RoleAccess;
+
+class Roles extends Model
+{
+
+    use RoleAccess;
+
+    /**
+     * @var
+     */
+    protected static $usersModel = User::class;
+
+    /**
+     * @var string
+     */
+    protected $table = 'roles';
+
+    /**
+     * @var array
+     */
+    protected $fillable = [
+        'id',
+        'name',
+        'slug',
+        'permissions',
+    ];
+
+}
+
+
+
+
+
+
 $role = Role::getRoleSlug('string');
 
 // Will return all users with that role
@@ -91,6 +181,9 @@ $role->getPermissionsAttribute($permissions);
 
 // Set access for the role
 $role->setPermissionsAttribute($permissions);
+
+
+
 
 ```
 

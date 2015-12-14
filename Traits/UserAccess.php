@@ -109,21 +109,24 @@ trait UserAccess
         $this->roles()->save($Role);
     }
 
+
     /**
-     * @return mixed
+     * @param $Role
      */
-    protected function createPermissions()
+    public function removeRole($Role)
     {
-        $userPermissions = $this->permissions;
-
-        $rolePermissions = [];
-
-        foreach ($this->roles as $role) {
-            $rolePermissions[] = $role->permissions;
-        }
-
-        return new static::$permissionsClass($userPermissions, $rolePermissions);
+        $this->roles()->where('slug', $Role)->first()->remove();
     }
+
+    /**
+     * @param array|object $Roles
+     */
+    public function replaceRoles($Roles)
+    {
+        $this->roles()->remove();
+        $this->roles()->saveMany($Roles);
+    }
+
 
 
 }
